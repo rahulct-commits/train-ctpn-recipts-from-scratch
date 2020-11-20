@@ -20,7 +20,7 @@ class ICDARDataset(Dataset):
             raise Exception('[ERROR] {} is not a directory'.format(datadir))
         if not os.path.isdir(labelsdir):
             raise Exception('[ERROR] {} is not a directory'.format(labelsdir))
-        print("icdar constructed ..")
+        # print("icdar constructed ..")
         self.datadir = datadir
         self.img_names = os.listdir(self.datadir)
         self.labelsdir = labelsdir
@@ -67,7 +67,7 @@ class ICDARDataset(Dataset):
         return np.array(gtboxes)
 
     def parse_gtfile(self,gt_path,rescale_fac = 1.0):
-        print('parsing gtfile ..')
+        # print('parsing gtfile ..')
         coor_lists = list()
         with open(gt_path, encoding="utf8") as f:
             content = f.readlines()
@@ -98,7 +98,7 @@ class ICDARDataset(Dataset):
         #cv2.imwrite('original.jpg', img)
         #####for read error, use default image#####
         if img is None:
-            print(img_path)
+            # print(img_path)
             with open('error_imgs.txt','a') as f:
                 f.write('{}\n'.format(img_path))
             img_name = 'img_2647.jpg'
@@ -116,7 +116,7 @@ class ICDARDataset(Dataset):
 
         gt_path = os.path.join(self.labelsdir, 'gt_'+img_name.split('.')[0]+'.txt')
         gtbox = self.parse_gtfile(gt_path,rescale_fac)
-        print('gtbox shape: ', gtbox.shape)
+        # print('gtbox shape: ', gtbox.shape)
 
         # clip image
         if np.random.randint(2) == 1:
@@ -127,7 +127,7 @@ class ICDARDataset(Dataset):
             gtbox[:, 2] = newx2
 
         [cls, regr], base_anchors = cal_rpn((h, w), (int(h / 16), int(w / 16)), 16, gtbox)
-        print('class', cls, f"{cls.shape}")
+        # print('class', cls, f"{cls.shape}")
 
         debug_img = self.draw_boxes(img.copy(),cls,base_anchors,gtbox)
         os.makedirs('debug', exist_ok=True)
@@ -154,5 +154,5 @@ if __name__ == "__main__":
         print(regrs.shape)
 
         i = i+1
-        if i == 1:
+        if i == 10:
             break
