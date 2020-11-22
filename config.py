@@ -17,4 +17,3 @@ pretrained_weights = 'checkpoints/CTPN.pth'
 num_workers = 2
 
 checkpoints_dir = './checkpoints'
-outputs = r'./logs'
