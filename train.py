@@ -82,7 +82,6 @@ if __name__ == '__main__':
         epoch_loss_cls = 0
         epoch_loss_regr = 0
         epoch_loss = 0
-        scheduler.step(epoch)
     
         for batch_i, (imgs, clss, regrs) in enumerate(dataloader):
             # print(imgs.shape)
@@ -111,6 +110,9 @@ if __name__ == '__main__':
                   f'Epoch: loss_cls:{epoch_loss_cls/mmp:.4f}--loss_regr:{epoch_loss_regr/mmp:.4f}--'
                   f'loss:{epoch_loss/mmp:.4f}\n')
     
+        # after optimizer.step()
+        scheduler.step()
+
         epoch_loss_cls /= epoch_size
         epoch_loss_regr /= epoch_size
         epoch_loss /= epoch_size
