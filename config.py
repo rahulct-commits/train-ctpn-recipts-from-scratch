@@ -13,5 +13,8 @@ RPN_TOTAL_NUM = 300
 IMAGE_MEAN = [123.68, 116.779, 103.939]
 OHEM = True
 
-pretrained_weights = 'checkpoints\CTPN.pth'
+pretrained_weights = 'checkpoints/CTPN.pth'
 num_workers = 2
+
+checkpoints_dir = './checkpoints'
+outputs = r'./logs'
