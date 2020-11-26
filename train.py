@@ -15,7 +15,7 @@ random_seed = 2019
 torch.random.manual_seed(random_seed)
 np.random.seed(random_seed)
 
-epochs = 30
+epochs = 1
 lr = 1e-4 #1e-3
 resume_epoch = 0
 
